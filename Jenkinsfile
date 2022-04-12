@@ -9,7 +9,7 @@ node{
         sh " '${maven_Home}/bin/mvn' clean install package"
     }
 
-     stage ('Deploy to Container'){
+    // stage ('Deploy to Container'){
         deploy adapters: [tomcat8(credentialsId: 'TOMCAT', path: '', url: 'http://52.90.127.229:8080/')], contextPath: null, war: '**/*.war'
      }
     
@@ -32,7 +32,7 @@ node{
         
     
     }
-    stage ("Deploy to Kubernetes"){
+   // stage ("Deploy to Kubernetes"){
     sh " kubectl apply -f deployment.yml"
     }
     
